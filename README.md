@@ -16,16 +16,17 @@ A plugin to agent alive check of Open-falcon
 
 HBS：添加的API代码如下：
 
-type Endpoint struct {
-
-	Endpoint string `json:"endpoint,omitempty"`
 	
-}
+	type Endpoint struct {
+		
+		Endpoint string `json:"endpoint,omitempty"`
+		
+	}
 
-//get ,API of all endpoints ,use in agent alive check.
+	//get ,API of all endpoints ,use in agent alive check.
 
 	http.HandleFunc("/all/endpoints", func(w http.ResponseWriter, r *http.Request) {
-	
+		
 		var endpoints []Endpoint
 		
 		var endpoint Endpoint
@@ -41,9 +42,10 @@ type Endpoint struct {
 		}
 		
 		cache.HostMap.Unlock()
-
+	
 		RenderJson(w, endpoints)
 		
 	})
 	
-	cfg.json里配置的是三个API的地址。如果不配置，默认的IP都是127.0.0.1
+	
+cfg.json里配置的是三个API的地址。如果不配置，默认的IP都是127.0.0.1
