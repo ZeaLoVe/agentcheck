@@ -43,3 +43,11 @@ HBS：添加的API代码如下：
 	
 	
 cfg.json里配置的是三个API的地址。如果不配置，默认的IP都是127.0.0.1
+
+目前的部署方法：添加 monitor_falcon/check_agent 目录
+
+将上面的agentcheck的代码编译成可执行文件后放入该目录，同时准备好配置文件 cfg.json，配置好3个API的地址
+
+同时准备好周期执行的脚本 60_check_agent.sh 脚本的内容就是调用agentcheck。
+
+然后在portal上配置执行插件的机器组就可以了，可以使用多台机器进行监控。
